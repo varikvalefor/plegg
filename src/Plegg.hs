@@ -8,7 +8,7 @@
 -- Maintainer  : varikvalefor@aol.com
 -- Stability   : experimental
 -- Portability : portable
--- This module contains @'plegg'@, a high-level interface to OpenBSD's
+-- This module contains @'plegg'@, a high-level interface for OpenBSD's
 -- @pledge(2)@.
 module Plegg where
 
