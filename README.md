@@ -1,5 +1,5 @@
 # plegg
-plegg is a semi-cross-platform Haskell interface for OpenBSD's pledge(2).
+plegg is a semi-cross-platform Haskell interface for OpenBSD's pledge(2) and unveil(2).
 
 plegg should compile and run fine on all `directory`-compatible operating systems.
 ## "Semi-Cross-Platform"
