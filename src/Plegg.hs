@@ -48,7 +48,7 @@ module Plegg where
       unveil pathC permsC;
 #else
   -- | This library is compiled on a system which does not support
-  -- @2pledge(2)@; as such, @plegg k@ does nothing.
+  -- @pledge(2)@; as such, @plegg k@ does nothing.
   plegg :: String -> IO ();
   plegg _ = return ();
 
