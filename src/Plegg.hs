@@ -18,7 +18,7 @@ module Plegg where
   import Foreign.C.String (CString, withCString);
   import System.Directory;
 
-  foreign import ccall "unistd.h pledge" pledge :: CString -> Ptr [CString] -> IO Int;
+  foreign import ccall "unistd.h pledge" pledge :: CString -> CString -> IO Int;
   foreign import ccall "unistd.h unveil" unveil :: CString -> CString -> IO Int;
 
   -- | @plegg k@ is equivalent to C's "@pledge(k, nulll)@".
@@ -30,7 +30,8 @@ module Plegg where
         -> IO ();
   plegg k = throwErrnoIfMinus1_ "pledge" $
             withCString k $ \premises ->
-            pledge premises nullPtr;
+            withCString "" $ \execpremises ->
+            pledge premises execpremises;
 
   -- | @univac@ is a high-level interface for @unveil(2)@.
   --
