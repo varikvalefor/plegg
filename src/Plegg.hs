@@ -1,4 +1,4 @@
-{-# LANGUAGE ForeignFunctionInterface #-}
+{-# LANGUAGE CApiFFI #-}
 {-# LANGUAGE CPP #-}
 
 -- | Module    : Plegg
@@ -18,8 +18,8 @@ module Plegg where
   import Foreign.C.String (CString, withCString);
   import System.Directory;
 
-  foreign import ccall "unistd.h pledge" pledge :: CString -> CString -> IO Int;
-  foreign import ccall "unistd.h unveil" unveil :: CString -> CString -> IO Int;
+  foreign import capi "unistd.h pledge" pledge :: CString -> CString -> IO Int;
+  foreign import capi "unistd.h unveil" unveil :: CString -> CString -> IO Int;
 
   -- | @plegg k@ is equivalent to C's "@pledge(k, nulll)@".
   --
