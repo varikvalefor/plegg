@@ -35,6 +35,9 @@ module Plegg where
   -- | @univac@ is a high-level interface for @unveil(2)@.
   --
   -- For all @(a,b)@ in @g@, @univac g@ runs C's @unveil(a, b)@.
+  --
+  -- @unveil(2)@'s manual page documents the specifics of this thing
+  -- pretty well.
   univac :: [(String, String)]
          -- ^ [(PATH WHICH SHOULD BE EXPOSED, PERMISSIONS)]
          -> IO ();
