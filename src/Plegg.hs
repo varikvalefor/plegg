@@ -36,7 +36,7 @@ module Plegg where
   --
   -- For all @(a,b)@ in @g@, @univac g@ runs C's @unveil(a, b)@.
   --
-  -- @univac "" ""@ is equivalent to C's @unveil(NULL, NULL)@.
+  -- @univac [("", "")]@ is equivalent to C's @unveil(NULL, NULL)@.
   --
   -- @unveil(2)@'s manual page documents the specifics of this thing
   -- pretty well.
