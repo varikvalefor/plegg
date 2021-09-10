@@ -1,10 +1,10 @@
 cabal-version: 2.4
 name: plegg
 version: 0.1.0.0
-synopsis: A semi-cross-platform interface for pledge(2)
+synopsis: A semi-cross-platform interface for pledge(2) and unveil(2)
 description: plegg offers a simple Haskell interface for OpenBSD's
-             pledge(2) such that this interface compiles but does
-             nothing on non-OpenBSD operating systems.
+             pledge(2) and unveil(2) such that this interface compiles
+             but does nothing on non-OpenBSD operating systems.
 bug-reports: https://github.com/varikvalefor/plegg/issues
 license: Unlicense
 author: Varik Valefor
