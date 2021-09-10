@@ -45,7 +45,7 @@ module Plegg where
     where
     expose :: (String, String) -> IO ()
     expose (path, perms) =
-      throwErrnoIfMinus1_ "unveil hath fallen!" $
+      throwErrnoIfMinus1_ "unveil" $
       withCString path $ \pathC ->
       withCString perms $ \permsC ->
       unveil pathC permsC;
