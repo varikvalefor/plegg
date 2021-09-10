@@ -28,7 +28,7 @@ module Plegg where
   plegg :: String
         -- ^ The pledges which should be used
         -> IO ();
-  plegg k = throwErrnoIfMinus1_ "pledge fails!" $
+  plegg k = throwErrnoIfMinus1_ "pledge" $
             withCString k $ \premises ->
             pledge premises nullPtr;
 
