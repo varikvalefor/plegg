@@ -13,10 +13,8 @@
 module Plegg where
 
 #ifdef openbsd_HOST_OS
-  import Foreign (Ptr, nullPtr);
   import Foreign.C.Error (throwErrnoIfMinus1_);
   import Foreign.C.String (CString, withCString);
-  import System.Directory;
 
   foreign import capi "unistd.h pledge" pledge :: CString -> CString -> IO Int;
   foreign import capi "unistd.h unveil" unveil :: CString -> CString -> IO Int;
