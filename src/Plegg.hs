@@ -59,5 +59,5 @@ module Plegg where
   -- | This library is compiled on a system which does not support
   -- @unveil(2)@; as such, @univac k@ does nothing.
   univac :: [(String, String)] -> IO ();
-  univac = return ();
+  univac _ = return ();
 #endif
