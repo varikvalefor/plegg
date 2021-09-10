@@ -13,6 +13,7 @@
 module Plegg where
 
 #ifdef openbsd_HOST_OS
+  import Foreign.Ptr (nullPtr);
   import Foreign.C.Error (throwErrnoIfMinus1_);
   import Foreign.C.String (CString, withCString);
 
@@ -35,6 +36,8 @@ module Plegg where
   --
   -- For all @(a,b)@ in @g@, @univac g@ runs C's @unveil(a, b)@.
   --
+  -- @univac "" ""@ is equivalent to C's @unveil(NULL, NULL)@.
+  --
   -- @unveil(2)@'s manual page documents the specifics of this thing
   -- pretty well.
   univac :: [(String, String)]
@@ -43,6 +46,9 @@ module Plegg where
   univac = mapM_ expose
     where
     expose :: (String, String) -> IO ()
+    expose ("", "") =
+      throwErrnoIfMinus1_ "unveil" $
+      unveil nullPtr nullPtr
     expose (path, perms) =
       throwErrnoIfMinus1_ "unveil" $
       withCString path $ \pathC ->
