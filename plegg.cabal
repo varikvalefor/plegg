@@ -6,7 +6,7 @@ description: plegg offers a simple Haskell interface for OpenBSD's
              pledge(2) and unveil(2) such that this interface compiles
              but does nothing on non-OpenBSD operating systems.
 bug-reports: https://github.com/varikvalefor/plegg/issues
-license: PublicDomain
+license: Unlicense
 author: Varik Valefor
 maintainer: varikvalefor@aol.com
 copyright: (c) Varik Valefor, 2021.  No rights reserved.
