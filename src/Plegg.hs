@@ -47,8 +47,7 @@ module Plegg where
     where
     expose :: (String, String) -> IO ()
     expose ("", "") =
-      throwErrnoIfMinus1_ "unveil" $
-      unveil nullPtr nullPtr
+      throwErrnoIfMinus1_ "unveil" $ unveil nullPtr nullPtr
     expose (path, perms) =
       throwErrnoIfMinus1_ "unveil" $
       withCString path $ \pathC ->
