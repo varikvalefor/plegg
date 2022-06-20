@@ -11,6 +11,7 @@
 -- This module contains high-level interfaces for OpenBSD's @pledge(2)@ and
 -- @unveil(2)@.
 module Plegg where
+import Data.Char;
 
 #ifdef openbsd_HOST_OS
   import Foreign.Ptr (nullPtr);
@@ -20,17 +21,62 @@ module Plegg where
   foreign import capi "unistd.h pledge" pledge :: CString -> CString -> IO Int;
   foreign import capi "unistd.h unveil" unveil :: CString -> CString -> IO Int;
 
-  -- | @plegg k@ is equivalent to C's "@pledge(k, nulll)@".
+  -- | For all 'Promise' @k@, @k@ is a 'Promise' which can be passed to
+  -- 'plegg'.  Each 'Promise' is best documented by the documentation of
+  -- @pledge(2)@.
+  data Promise = Stdio
+               | RPath
+               | WPath
+               | CPath
+               | DPath
+               | TmpPath
+               | INet
+               | MCast
+               | FAttr
+               | Chown
+               | Flock
+               | Unix
+               | Dns
+               | GetPW
+               | SendFD
+               | RecvFD
+               | Tape
+               | TTY
+               | Proc
+               | Exec
+               | Prot_Exec
+               | Settime
+               | Ps
+               | VMInfo
+               | Id
+               | Pf
+               | Route
+               | WRoute
+               | Audio
+               | Video
+               | Bpf
+               | Unveil
+               | Error
+               deriving Show;
+
+  -- | @plegg k@ is roughly equivalent to C's "@pledge(k, nulll)@".
+  -- However, unlike the standard @pledge(2)@, @plegg@'s 'Promise's are
+  -- typed.
   --
-  -- The available pledges are documented pretty well in @pledge(2)@'s
-  -- manual page.
-  plegg :: String
+  -- 'Promise's which are passed to @plegg@ are converted into text
+  -- which is passed to @pledge(2)@.
+  plegg :: [Promise]
         -- ^ The pledges which should be used
         -> IO ();
   plegg k = throwErrnoIfMinus1_ "pledge" $
-            withCString k $ \premises ->
+            withCString (promises k) $ \premises ->
             withCString "" $ \execpremises ->
             pledge premises execpremises;
+
+  -- | @promises k@ is a @pledge(2)@-suitable list of the promises
+  -- which are specified by @k@.
+  promises :: [Promise] -> String;
+  promises = map toLower . concat . map show;
 
   -- | @univac@ is a high-level interface for @unveil(2)@.
   --
