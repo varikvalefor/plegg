@@ -86,7 +86,7 @@ import Data.Char;
   --
   -- @unveil(2)@'s manual page documents the specifics of this thing
   -- pretty well.
-  univac :: [(String, String)]
+  univac :: [(FilePath, String)]
          -- ^ [(PATH WHICH SHOULD BE EXPOSED, PERMISSIONS)]
          -> IO ();
   univac = mapM_ expose
@@ -107,6 +107,6 @@ import Data.Char;
 
   -- | This library is compiled on a system which does not support
   -- @unveil(2)@; as such, @univac k@ does nothing.
-  univac :: [(String, String)] -> IO ();
+  univac :: [(FilePath, String)] -> IO ();
   univac _ = return ();
 #endif
