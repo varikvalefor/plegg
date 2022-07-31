@@ -102,7 +102,7 @@ import Data.Char;
 #else
   -- | This library is compiled on a system which does not support
   -- @pledge(2)@; as such, @plegg k@ does nothing.
-  plegg :: String -> IO ();
+  plegg :: [Promise] -> IO ();
   plegg _ = return ();
 
   -- | This library is compiled on a system which does not support
