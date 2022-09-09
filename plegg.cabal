@@ -13,7 +13,7 @@ copyright: (c) Varik Valefor 2022.  No rights reserved.
 category: System
 
 library
-    exposed-modules:  Plegg
+    exposed-modules:  System.OpenBSD.Plegg
     build-depends:
       base ^>=4.14.1.0
     hs-source-dirs:   src

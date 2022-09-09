@@ -1,7 +1,7 @@
 {-# LANGUAGE CApiFFI #-}
 {-# LANGUAGE CPP #-}
 
--- | Module    : Plegg
+-- | Module    : System.OpenBSD.Plegg
 -- Description : High-level interface for pledge(2)
 -- Copyright   : (c) Varik Valefor, 2021
 -- License     : Unlicense
