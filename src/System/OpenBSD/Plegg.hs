@@ -114,16 +114,9 @@ import Control.Monad;
          -> IO ();
   univac = mapM_ expose
     where
-    expose :: (String, String) -> IO ()
     expose = teim1_ "unveil" . uncurry unveil <=< toCStrings
-    --
-    teim1_ :: (Eq a, Num a) => String -> IO a -> IO ()
     teim1_ = throwErrnoIfMinus1_
-    --
-    toCStrings :: (String, String) -> IO (CString, CString)
     toCStrings = uncurry (liftM2 (,)) . both (`withCString` pure)
-    --
-    both :: (a -> b) -> (a, a) -> (b, b)
     both f (a, b) = (f a, f b);
 
 #else
