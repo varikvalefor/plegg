@@ -59,10 +59,11 @@ import Control.Monad;
         --
         -- The pledges which should be used
         -> IO ();
-  plegg k = throwErrnoIfMinus1_ "pledge" $
-            withCString (promises k) $ \premises ->
-            withCString "" $ \execpremises ->
-            pledge premises execpremises;
+  plegg k = teim1_ "pledge" $ liftM2 pledge (prem k) (exec k)
+    where
+    teim1_ = throwErrnoIfMinus1_
+    prem t = withCString (promises k) pure
+    exec _ = withCString "" pure;
 
   -- | = la .lojban.
   --
