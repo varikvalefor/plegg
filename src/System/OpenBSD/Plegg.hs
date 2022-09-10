@@ -19,7 +19,7 @@
 --
 -- This module contains high-level interfaces for OpenBSD's @pledge(2)@ and
 -- @unveil(2)@.
-module Plegg where
+module System.OpenBSD.Plegg where
 import Data.Char;
 
 -- | = la .lojban.
