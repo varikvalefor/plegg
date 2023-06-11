@@ -15,6 +15,6 @@ category: System
 library
     exposed-modules:  System.OpenBSD.Plegg
     build-depends:
-      base ^>=4.14.1.0
+      base ^>=4.16.4.0
     hs-source-dirs:   src
     default-language: Haskell2010
