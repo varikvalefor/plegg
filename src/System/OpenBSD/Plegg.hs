@@ -17,8 +17,8 @@
 --
 -- = English
 --
--- This module contains high-level interfaces for OpenBSD's @pledge(2)@ and
--- @unveil(2)@.
+-- This module contains high-level interfaces for OpenBSD's @pledge(2)@
+-- and @unveil(2)@.
 module System.OpenBSD.Plegg where
 import Data.Char;
 import Control.Monad;
