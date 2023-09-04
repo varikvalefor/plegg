@@ -192,7 +192,7 @@ import Control.Monad;
 --
 -- ni'o ro da poi ke'a ctaipe la'oi .'Promise'. zo'u cumki fa lo nu
 -- pilno da lo selru'e be la'oi .plegg. kei je cu se skicu ve lo
--- mu'oi gy. man(1) .gy. papri poi velski la'o gy. pledge(2) .gy.
+-- mu'oi gy. man(1) .gy. papri poi ke'a velski la'o gy. pledge(2) .gy.
 --
 -- = English
 --
