@@ -190,8 +190,8 @@ import Control.Monad;
 
 -- | = la .lojban.
 --
--- ni'o ro da poi ke'a ctaipe la'oi .'Promise'. zo'u cumki fa lo nu
--- da selru'e la'oi .plegg. kei je cu se skicu ve lo mu'oi
+-- ni'o ro da poi ke'a ctaipe la'oi .'Promise'. zo'u ga je cumki fa lo
+-- nu da selru'e la'oi .plegg. gi da se skicu fo lo mu'oi
 -- gy. man(1) .gy. papri poi ke'a velski la'o gy. pledge(2) .gy.
 --
 -- = English
