@@ -75,7 +75,7 @@ import Control.Monad;
   -- @promises k@ is a @pledge(2)@-suitable list of the promises
   -- which are specified by @k@.
   promises :: [Promise] -> String;
-  promises = map toLower . concat . map show;
+  promises = map toLower . unwords . map show;
 
   -- | = la .lojban.
   --
