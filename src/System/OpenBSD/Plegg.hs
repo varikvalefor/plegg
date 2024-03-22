@@ -12,8 +12,9 @@
 -- = la .lojban.
 --
 -- ni'o le me'oi .module. cu vasru le mu'oi glibau. high-level .glibau.
--- korbipe be lo me'oi .Haskell. proga je vu'oi la'o gy. pledge(2) .gy.
--- je la'o gy. unveil(2) .gy. vu'o pe la'oi .OpenBSD.
+-- poi tu'a ke'a filri'a lo nu pilno la'oi .Haskell. tu'a vu'oi
+-- la'o zoi.  pledge(2) .zoi. ju'e la'o zoi. unveil(2) .zoi. vu'o
+-- pe la'oi .OpenBSD.
 --
 -- = English
 --
