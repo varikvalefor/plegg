@@ -66,7 +66,7 @@ import Control.Monad;
 
   -- | = la .lojban.
   --
-  -- ni'o ko'a goi la'o zoi. @promises k@ .zoi. selci'a je cu liste lo
+  -- ni'o ko'a goi la'o zoi. @promises k@ .zoi. liste lo
   -- me'oi .promise. pe la'oi @k@.  .i cumki fa lo nu ko'a selru'e la'o
   -- gy. @pledge(2)@ .gy.
   --
