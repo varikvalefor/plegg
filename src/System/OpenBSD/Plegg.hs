@@ -38,8 +38,8 @@ import Control.Monad;
 -- @pledge(k, null)@ pe la'oi .C.  .i ku'i drata ki'u le nu le me'oi
 -- .'Promise'. pe la'oi .@plegg@. cu se me'oi .type.
 --
--- .i lo me'oi .'Promise'. poi selru'e la'oi .@plegg@. cu binxo lo
--- selci'a poi selru'e la'o gy. @pledge(2)@ .gy.
+-- .i lo me'oi .'Promise'. poi ke'a selru'e la'oi .@plegg@. cu binxo lo
+-- se tcidu poi ke'a selru'e la'o gy. @pledge(2)@ .gy.
 --
 -- = English
 --
