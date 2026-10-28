@@ -59,6 +59,42 @@ plegg :: [Promise]
       -- The pledges which should be used
       -> IO ();
 
+-- | = la .lojban.
+--
+-- ni'o la'oi .@univac@. korbipe la'oi .Haskell. je ko'a goi la'o gy.
+-- @unveil(2)@ .gy.
+--
+-- .i ro da poi .orsi re je poi se vasru la'oi .@g@. zo'u la'o zoi.
+-- @univac g@ .zoi. pilno lo te .orsi fa'u lo ve .orsi lo pamoi sumti
+-- be ko'a be'o fa'u lo remoi sumti be ko'a je cu co'e ko'a
+--
+-- .i la'o zoi. @univac [("", "")]@ .zoi. dunli la'o zoi.
+-- @unveil(NULL, NULL)@ .zoi. pe la'oi .C.
+--
+-- .i le clinoi be la'o gy. @unveil(2)@ .gy. cu xamgu velski le tcila
+-- be la'o gy. @unveil(2) .gy.
+--
+-- = English
+--
+-- @univac@ is a high-level interface for @unveil(2)@.
+--
+-- For all @(a,b)@ in @g@, @univac g@ runs C's @unveil(a, b)@.
+--
+-- @univac [("", "")]@ is equivalent to C's @unveil(NULL, NULL)@.
+--
+-- @unveil(2)@'s manual page documents the specifics of this thing
+-- pretty well.
+univac :: [(FilePath, String)]
+       -- ^ = la .lojban.
+       --
+       -- [(le me'oi .filepath. poi ke'a goi ko'a zo'u cadga fa lo nu
+       -- me'oi .expose. ko'a, lo me'oi .permission.)]
+       --
+       -- = English
+       --
+       -- [(PATH WHICH SHOULD BE EXPOSED, PERMISSIONS)]
+       -> IO ();
+
 #ifdef openbsd_HOST_OS
 
   plegg k = throwErrnoIfMinus1_ "pledge" $
@@ -79,41 +115,6 @@ plegg :: [Promise]
   promises :: [Promise] -> String;
   promises = map toLower . unwords . map show;
 
-  -- | = la .lojban.
-  --
-  -- ni'o la'oi .@univac@. korbipe la'oi .Haskell. je ko'a goi la'o gy.
-  -- @unveil(2)@ .gy.
-  --
-  -- .i ro da poi .orsi re je poi se vasru la'oi .@g@. zo'u la'o zoi.
-  -- @univac g@ .zoi. pilno lo te .orsi fa'u lo ve .orsi lo pamoi sumti
-  -- be ko'a be'o fa'u lo remoi sumti be ko'a je cu co'e ko'a
-  --
-  -- .i la'o zoi. @univac [("", "")]@ .zoi. dunli la'o zoi.
-  -- @unveil(NULL, NULL)@ .zoi. pe la'oi .C.
-  --
-  -- .i le clinoi be la'o gy. @unveil(2)@ .gy. cu xamgu velski le tcila
-  -- be la'o gy. @unveil(2) .gy.
-  --
-  -- = English
-  --
-  -- @univac@ is a high-level interface for @unveil(2)@.
-  --
-  -- For all @(a,b)@ in @g@, @univac g@ runs C's @unveil(a, b)@.
-  --
-  -- @univac [("", "")]@ is equivalent to C's @unveil(NULL, NULL)@.
-  --
-  -- @unveil(2)@'s manual page documents the specifics of this thing
-  -- pretty well.
-  univac :: [(FilePath, String)]
-         -- ^ = la .lojban.
-         --
-         -- [(le me'oi .filepath. poi ke'a goi ko'a zo'u cadga fa lo nu
-         -- me'oi .expose. ko'a, lo me'oi .permission.)]
-         --
-         -- = English
-         --
-         -- [(PATH WHICH SHOULD BE EXPOSED, PERMISSIONS)]
-         -> IO ();
   univac = mapM_ expose
     where
     expose = teim1_ "unveil" . uncurry unveil <=< toCStrings
@@ -125,41 +126,6 @@ plegg :: [Promise]
 
   plegg _ = return ();
 
-  -- | = la .lojban.
-  --
-  -- ni'o la'oi .@univac@. korbipe la'oi .Haskell. je ko'a goi la'o gy.
-  -- @unveil(2)@ .gy.
-  --
-  -- .i ro da poi .orsi re je poi se vasru la'oi .@g@. zo'u la'o zoi.
-  -- @univac g@ .zoi. pilno lo te .orsi fa'u lo ve .orsi lo pamoi sumti
-  -- be ko'a be'o fa'u lo remoi sumti be ko'a je cu co'e ko'a
-  --
-  -- .i la'o zoi. @univac [("", "")]@ .zoi. dunli la'o zoi.
-  -- @unveil(NULL, NULL)@ .zoi. pe la'oi .C.
-  --
-  -- .i le clinoi be la'o gy. @unveil(2)@ .gy. cu xamgu velski le tcila
-  -- be la'o gy. @unveil(2) .gy.
-  --
-  -- = English
-  --
-  -- @univac@ is a high-level interface for @unveil(2)@.
-  --
-  -- For all @(a,b)@ in @g@, @univac g@ runs C's @unveil(a, b)@.
-  --
-  -- @univac [("", "")]@ is equivalent to C's @unveil(NULL, NULL)@.
-  --
-  -- @unveil(2)@'s manual page documents the specifics of this thing
-  -- pretty well.
-  univac :: [(FilePath, String)]
-         -- ^ = la .lojban.
-         --
-         -- [(le me'oi .filepath. poi ke'a goi ko'a zo'u cadga fa lo nu
-         -- me'oi .expose. ko'a, lo me'oi .permission.)]
-         --
-         -- = English
-         --
-         -- [(PATH WHICH SHOULD BE EXPOSED, PERMISSIONS)]
-         -> IO ();
   univac _ = return ();
 #endif
 
