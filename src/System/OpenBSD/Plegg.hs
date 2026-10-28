@@ -23,7 +23,6 @@
 module System.OpenBSD.Plegg where
 import Data.Char;
 import Control.Monad;
-
 #ifdef openbsd_HOST_OS
   import Foreign.Ptr (nullPtr);
   import Foreign.C.Error (throwErrnoIfMinus1_);
@@ -31,33 +30,37 @@ import Control.Monad;
 
   foreign import capi "unistd.h pledge" pledge :: CString -> CString -> IO Int;
   foreign import capi "unistd.h unveil" unveil :: CString -> CString -> IO Int;
+#endif
 
-  -- | = la .lojban.
-  --
-  -- ni'o la'o zoi. @plegg k@ .zoi. na ru'e dunli la'o zoi.
-  -- @pledge(k, null)@ pe la'oi .C.  .i ku'i drata ki'u le nu le me'oi
-  -- .'Promise'. pe la'oi .@plegg@. cu se me'oi .type.
-  --
-  -- .i lo me'oi .'Promise'. poi selru'e la'oi .@plegg@. cu binxo lo
-  -- selci'a poi selru'e la'o gy. @pledge(2)@ .gy.
-  --
-  -- = English
-  --
-  -- @plegg k@ is roughly equivalent to C's "@pledge(k, nulll)@".
-  -- However, unlike the standard @pledge(2)@, @plegg@'s 'Promise's are
-  -- typed.
-  --
-  -- 'Promise's which are passed to @plegg@ are converted into text
-  -- which is passed to @pledge(2)@.
-  plegg :: [Promise]
-        -- ^ = la .lojban.
-        --
-        -- zo'e poi cadga fa lo nu me'oi .enforce. tu'a ke'a
-        --
-        -- = English
-        --
-        -- The pledges which should be used
-        -> IO ();
+-- | = la .lojban.
+--
+-- ni'o la'o zoi. @plegg k@ .zoi. na ru'e dunli la'o zoi.
+-- @pledge(k, null)@ pe la'oi .C.  .i ku'i drata ki'u le nu le me'oi
+-- .'Promise'. pe la'oi .@plegg@. cu se me'oi .type.
+--
+-- .i lo me'oi .'Promise'. poi selru'e la'oi .@plegg@. cu binxo lo
+-- selci'a poi selru'e la'o gy. @pledge(2)@ .gy.
+--
+-- = English
+--
+-- @plegg k@ is roughly equivalent to C's "@pledge(k, nulll)@".
+-- However, unlike the standard @pledge(2)@, @plegg@'s 'Promise's are
+-- typed.
+--
+-- 'Promise's which are passed to @plegg@ are converted into text
+-- which is passed to @pledge(2)@.
+plegg :: [Promise]
+      -- ^ = la .lojban.
+      --
+      -- zo'e poi cadga fa lo nu me'oi .enforce. tu'a ke'a
+      --
+      -- = English
+      --
+      -- The pledges which should be used
+      -> IO ();
+
+#ifdef openbsd_HOST_OS
+
   plegg k = throwErrnoIfMinus1_ "pledge" $
             withCString (promises k) $ \premises ->
             withCString "" $ \execpremises ->
@@ -120,33 +123,6 @@ import Control.Monad;
 
 #else
 
-  -- | = la .lojban.
-  --
-  -- ni'o la'o zoi. @plegg k@ .zoi. na ru'e dunli la'o zoi.
-  -- @pledge(k, null)@ pe la'oi .C.  .i ku'i drata ki'u le nu le me'oi
-  -- .'Promise'. pe la'oi .@plegg@. cu se me'oi .type.
-  --
-  -- .i lo me'oi .'Promise'. poi selru'e la'oi .@plegg@. cu binxo lo
-  -- selci'a poi selru'e la'o gy. @pledge(2)@ .gy.
-  --
-  -- = English
-  --
-  -- @plegg k@ is roughly equivalent to C's "@pledge(k, nulll)@".
-  -- However, unlike the standard @pledge(2)@, @plegg@'s 'Promise's are
-  -- typed.
-  --
-  -- 'Promise's which are passed to @plegg@ are converted into text
-  -- which is passed to @pledge(2)@.
-  plegg :: [Promise]
-        -- ^ = la .lojban.
-        --
-        -- zo'e poi ke'a goi ko'a zo'u cadga fa lo nu me'oi .enforce.
-        -- tu'a ko'a
-        --
-        -- = English
-        --
-        -- The pledges which should be used
-        -> IO ();
   plegg _ = return ();
 
   -- | = la .lojban.
