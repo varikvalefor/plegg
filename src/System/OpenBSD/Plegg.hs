@@ -64,9 +64,9 @@ plegg :: [Promise]
 -- ni'o la'oi .@univac@. korbipe la'oi .Haskell. je ko'a goi la'o gy.
 -- @unveil(2)@ .gy.
 --
--- .i ro da poi .orsi re je poi se vasru la'oi .@g@. zo'u la'o zoi.
--- @univac g@ .zoi. pilno lo te .orsi fa'u lo ve .orsi lo pamoi sumti
--- be ko'a be'o fa'u lo remoi sumti be ko'a je cu co'e ko'a
+-- .i ro da poi ke'a .orsi li re je cu selvau pe'a la'oi .@g@. zo'u
+-- la'o zoi. @univac g@ .zoi. jai rinka tu'a lo me'oi .@unveil(2)@.
+-- be lo te .orsi be da be'o bei lo ve .orsi be da
 --
 -- .i la'o zoi. @univac [("", "")]@ .zoi. dunli la'o zoi.
 -- @unveil(NULL, NULL)@ .zoi. pe la'oi .C.
