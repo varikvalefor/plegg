@@ -96,7 +96,6 @@ univac :: [(FilePath, String)]
        -> IO ();
 
 #ifdef openbsd_HOST_OS
-
   plegg k = throwErrnoIfMinus1_ "pledge" $
             withCString (promises k) $ \premises ->
             withCString "" $ \execpremises ->
@@ -121,9 +120,7 @@ univac :: [(FilePath, String)]
     teim1_ = throwErrnoIfMinus1_
     toCStrings = uncurry (liftM2 (,)) . both (`withCString` pure)
     both f (a, b) = (f a, f b);
-
 #else
-
   plegg _ = return ();
 
   univac _ = return ();
