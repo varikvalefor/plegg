@@ -3,7 +3,7 @@
 
 -- | Module    : System.OpenBSD.Plegg
 -- Description : High-level interface for pledge(2)
--- Copyright   : (c) Varik Valefor, 2021
+-- Copyright   : (c) Varik Valefor, 2026
 -- License     : Unlicense
 -- Maintainer  : varikvalefor@aol.com
 -- Stability   : experimental
