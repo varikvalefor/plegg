@@ -129,8 +129,10 @@ univac :: [(FilePath, String)]
 -- | = la .lojban.
 --
 -- ni'o ro da poi ke'a ctaipe la'oi .'Promise'. zo'u ga je cumki fa lo
--- nu da selru'e la'oi .plegg. gi skicu da fo lo mu'oi
--- gy. man(1) .gy. papri poi ke'a velski la'o gy. pledge(2) .gy.
+-- nu da selru'e la'oi .plegg. gi da mapti lo co'e be lo me'oi .lowercase.
+-- versiio be lo cmene be da be'o pe la'o gy. pledge(2) .gy.  .i la .varik.
+-- cu jinvi le du'u le velcki be tu'a la'o gy. pledge(2) .gy. cu jai filri'a
+-- lo nu jimpe
 --
 -- = English
 --
