@@ -71,8 +71,8 @@ plegg :: [Promise]
 -- .i la'o zoi. @univac [("", "")]@ .zoi. dunli la'o zoi.
 -- @unveil(NULL, NULL)@ .zoi. pe la'oi .C.
 --
--- .i le clinoi be la'o gy. @unveil(2)@ .gy. cu xamgu velski le tcila
--- be la'o gy. @unveil(2) .gy.
+-- .i la .varik. cu jinvi le du'u le velcki be
+-- la'o zoi. @unveil(2)@ .gy. cu jai filri'a lo nu jimpe
 --
 -- = English
 --
