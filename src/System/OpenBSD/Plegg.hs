@@ -65,7 +65,7 @@ plegg :: [Promise]
 -- @unveil(2)@ .gy.
 --
 -- .i ro da poi ke'a .orsi li re je cu selvau pe'a la'oi .@g@. zo'u
--- la'o zoi. @univac g@ .zoi. jai rinka tu'a lo me'oi .@unveil(2)@.
+-- la'o zoi. @univac g@ .zoi. jai rinka tu'a lo me ko'a
 -- be lo te .orsi be da be'o bei lo ve .orsi be da
 --
 -- .i la'o zoi. @univac [("", "")]@ .zoi. dunli la'o zoi.
