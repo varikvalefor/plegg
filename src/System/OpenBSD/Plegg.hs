@@ -12,8 +12,9 @@
 -- = la .lojban.
 --
 -- ni'o le me'oi .module. cu vasru le mu'oi glibau. high-level .glibau.
--- korbipe be lo me'oi .Haskell. proga je vu'oi la'o gy. pledge(2) .gy.
--- je la'o gy. unveil(2) .gy. vu'o pe la'oi .OpenBSD.
+-- poi ke'a jai filri'a lo nu lo te gerna be la'oi .Haskell. cu jai
+-- rinka tu'a vu'oi la'o zoi. pledge(2) .zoi. ju'e la'o zoi. unveil(2) .zoi.
+-- vu'o pe la'oi .OpenBSD.
 --
 -- = English
 --
@@ -66,7 +67,7 @@ import Control.Monad;
 
   -- | = la .lojban.
   --
-  -- ni'o ko'a goi la'o zoi. @promises k@ .zoi. selci'a je cu liste lo
+  -- ni'o ko'a goi la'o zoi. @promises k@ .zoi. liste lo
   -- me'oi .promise. pe la'oi @k@.  .i cumki fa lo nu ko'a selru'e la'o
   -- gy. @pledge(2)@ .gy.
   --
@@ -191,7 +192,7 @@ import Control.Monad;
 -- | = la .lojban.
 --
 -- ni'o ro da poi ke'a ctaipe la'oi .'Promise'. zo'u ga je cumki fa lo
--- nu da selru'e la'oi .plegg. gi da se skicu fo lo mu'oi
+-- nu da selru'e la'oi .plegg. gi skicu da fo lo mu'oi
 -- gy. man(1) .gy. papri poi ke'a velski la'o gy. pledge(2) .gy.
 --
 -- = English
