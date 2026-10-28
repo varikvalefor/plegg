@@ -52,8 +52,7 @@ import Control.Monad;
   plegg :: [Promise]
         -- ^ = la .lojban.
         --
-        -- zo'e poi ke'a goi ko'a zo'u cadga fa lo nu me'oi .enforce.
-        -- tu'a ko'a
+        -- zo'e poi cadga fa lo nu me'oi .enforce. tu'a ke'a
         --
         -- = English
         --
