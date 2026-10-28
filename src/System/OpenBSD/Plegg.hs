@@ -61,7 +61,7 @@ plegg :: [Promise]
 
 -- | = la .lojban.
 --
--- ni'o la'oi .@univac@. korbipe la'oi .Haskell. je ko'a goi la'o gy.
+-- ni'o la'oi .@univac@. korbipe la'oi .Haskell. ce ko'a goi la'o gy.
 -- @unveil(2)@ .gy.
 --
 -- .i ro da poi ke'a .orsi li re je cu selvau pe'a la'oi .@g@. zo'u
