@@ -43,7 +43,7 @@ import Control.Monad;
 --
 -- = English
 --
--- @plegg k@ is roughly equivalent to C's "@pledge(k, nulll)@".
+-- @plegg k@ is roughly equivalent to C's "@pledge(k, null)@".
 -- However, unlike the standard @pledge(2)@, @plegg@'s 'Promise's are
 -- typed.
 --
