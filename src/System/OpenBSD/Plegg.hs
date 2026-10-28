@@ -32,7 +32,6 @@ import Control.Monad;
   foreign import capi "unistd.h pledge" pledge :: CString -> CString -> IO Int;
   foreign import capi "unistd.h unveil" unveil :: CString -> CString -> IO Int;
 
-
   -- | = la .lojban.
   --
   -- ni'o la'o zoi. @plegg k@ .zoi. na ru'e dunli la'o zoi.
