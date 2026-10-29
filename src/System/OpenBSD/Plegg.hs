@@ -21,7 +21,7 @@
 -- This module contains high-level interfaces for OpenBSD's @pledge(2)@
 -- and @unveil(2)@.
 module System.OpenBSD.Plegg where
-import Data.Char;
+import Data.Char (toLower);
 import Control.Monad;
 #ifdef openbsd_HOST_OS
   import Foreign.Ptr (nullPtr);
