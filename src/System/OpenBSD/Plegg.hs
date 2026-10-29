@@ -22,7 +22,7 @@
 -- and @unveil(2)@.
 module System.OpenBSD.Plegg where
 import Data.Char (toLower);
-import Control.Monad;
+import Control.Monad (liftM2, (<=<));
 #ifdef openbsd_HOST_OS
   import Foreign.Ptr (nullPtr);
   import Foreign.C.Error (throwErrnoIfMinus1_);
