@@ -88,7 +88,9 @@ univac :: [(FilePath, String)]
        -- ^ = la .lojban.
        --
        -- [(le me'oi .filepath. poi ke'a goi ko'a zo'u cadga fa lo nu
-       -- me'oi .expose. ko'a, lo me'oi .permission.)]
+       -- me'oi .expose. ko'a, lo torveki be lo jai se curmi... be'o
+       -- noi ke'a mapti lo me'oi .@permissions@. co'e pe la'o gy.
+       -- @unveil(2)@ .gy.)]
        --
        -- = English
        --
