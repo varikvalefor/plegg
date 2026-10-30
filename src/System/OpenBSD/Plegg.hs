@@ -68,7 +68,7 @@ plegg :: [Promise]
 -- la'o zoi. @univac g@ .zoi. jai rinka tu'a lo me ko'a
 -- be lo te .orsi be da be'o bei lo ve .orsi be da
 --
--- .i la'o zoi. @univac [("", "")]@ .zoi. dunli la'o zoi.
+-- .i la'o zoi. @univac [("", "")]@ .zoi. mapti la'o zoi.
 -- @unveil(NULL, NULL)@ .zoi. pe la'oi .C.
 --
 -- .i la .varik. cu jinvi le du'u le velcki be
