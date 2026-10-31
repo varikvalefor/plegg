@@ -120,7 +120,8 @@ univac :: [(FilePath, String)]
     where
     expose = teim1_ "unveil" . uncurry unveil <=< toCStrings
     teim1_ = throwErrnoIfMinus1_
-    toCStrings = uncurry (liftM2 (,)) . both (`withCString` pure)
+    toCStrings ("","") = pure (nullPtr, nullPtr)
+    toCStrings x = (uncurry (liftM2 (,)) . both (`withCString` pure)) x
     both f (a, b) = (f a, f b);
 #else
   plegg _ = return ();
