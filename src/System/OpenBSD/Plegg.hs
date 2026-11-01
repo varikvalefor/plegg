@@ -34,7 +34,7 @@ import Control.Monad (liftM2, (<=<));
 
 -- | = la .lojban.
 --
--- ni'o la'o zoi. @plegg k@ .zoi. na ru'e dunli la'o zoi.
+-- ni'o la'o zoi. @plegg k@ .zoi. panra la'o zoi.
 -- @pledge(k, null)@ pe la'oi .C.  .i ku'i drata ki'u zo'e joi tu'a le
 -- se ctaipe be lo me'oi .'Promise'. pe la'oi .@plegg@.
 --
