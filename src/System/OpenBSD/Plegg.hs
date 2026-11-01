@@ -38,7 +38,7 @@ import Control.Monad (liftM2, (<=<));
 -- @pledge(k, null)@ pe la'oi .C.  .i ku'i drata ki'u zo'e joi tu'a le
 -- se ctaipe be lo me'oi .'Promise'. pe la'oi .@plegg@.
 --
--- .i lo me'oi .'Promise'. poi ke'a selru'e la'oi .@plegg@. cu binxo lo
+-- .i lo me'oi .'Promise'. poi ke'a selru'e la'oi .@plegg@. cu binxo pe'a lo
 -- se tcidu poi ke'a selru'e la'o gy. @pledge(2)@ .gy.
 --
 -- = English
