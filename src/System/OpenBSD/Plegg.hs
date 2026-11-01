@@ -70,7 +70,7 @@ plegg :: [Promise]
 --
 -- @plegg2@ resembles 'plegg'.  But @plegg2@ differs from 'plegg'.
 -- The proof of differing is relevant to that (@plegg2@ facilitates
--- doing @execpromises@ stuff@.  An alternative description is
+-- doing @execpromises@ stuff@).  An alternative description is
 -- "@plegg k l@ resembles @pledge(k,l)@ of C".
 plegg2 :: [Promise]
        -- ^ = la .lojban
