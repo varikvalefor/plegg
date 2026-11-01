@@ -59,7 +59,7 @@ plegg :: [Promise]
       -- The pledges which should be used
       -> IO ();
 
---| = la .lojban.
+-- | = la .lojban.
 --
 -- ni'o la'oi .@plegg2@. panra la'oi .'plegg'. je ku'i cu frica ri ni'i
 -- zo'e joi le su'u vo'a jai filri'a tu'a lo me'oi .@execpromises@.  .i
