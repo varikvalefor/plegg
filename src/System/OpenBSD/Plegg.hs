@@ -107,10 +107,7 @@ univac :: [(FilePath, String)]
                withCString (promises l) $ \execpremises ->
                pledge premises execpremises;
 
-  plegg k = throwErrnoIfMinus1_ "pledge" $
-            withCString (promises k) $ \premises ->
-            withCString "" $ \execpremises ->
-            pledge premises execpremises;
+  plegg = flip plegg2 [];
 
   -- | = la .lojban.
   --
