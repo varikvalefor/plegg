@@ -59,6 +59,10 @@ plegg :: [Promise]
       -- The pledges which should be used
       -> IO ();
 
+plegg2 :: [Promise]
+       -> [Promise]
+       -> IO ();
+
 -- | = la .lojban.
 --
 -- ni'o la'oi .@univac@. korbipe la'oi .Haskell. ce ko'a goi la'o gy.
@@ -98,6 +102,11 @@ univac :: [(FilePath, String)]
        -> IO ();
 
 #ifdef openbsd_HOST_OS
+  plegg2 k l = throwErrnoIfMinus1_ "pledge" $
+               withCString (promises k) $ \premises ->
+               withCString (promises l) $ \execpremises ->
+               pledge premises execpremises;
+
   plegg k = throwErrnoIfMinus1_ "pledge" $
             withCString (promises k) $ \premises ->
             withCString "" $ \execpremises ->
@@ -125,6 +134,8 @@ univac :: [(FilePath, String)]
     both f (a, b) = (f a, f b);
 #else
   plegg _ = return ();
+
+  plegg2 _ = return ();
 
   univac _ = return ();
 #endif
