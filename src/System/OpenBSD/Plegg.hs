@@ -3,7 +3,7 @@
 
 -- | Module    : System.OpenBSD.Plegg
 -- Description : High-level interface for pledge(2)
--- Copyright   : (c) Varik Valefor, 2021
+-- Copyright   : (c) Varik Valefor, 2026
 -- License     : Unlicense
 -- Maintainer  : varikvalefor@aol.com
 -- Stability   : experimental
@@ -21,9 +21,8 @@
 -- This module contains high-level interfaces for OpenBSD's @pledge(2)@
 -- and @unveil(2)@.
 module System.OpenBSD.Plegg where
-import Data.Char;
-import Control.Monad;
-
+import Data.Char (toLower);
+import Control.Monad (liftM2, (<=<));
 #ifdef openbsd_HOST_OS
   import Foreign.Ptr (nullPtr);
   import Foreign.C.Error (throwErrnoIfMinus1_);
@@ -31,35 +30,74 @@ import Control.Monad;
 
   foreign import capi "unistd.h pledge" pledge :: CString -> CString -> IO Int;
   foreign import capi "unistd.h unveil" unveil :: CString -> CString -> IO Int;
+#endif
 
+-- | = la .lojban.
+--
+-- ni'o la'o zoi. @plegg k@ .zoi. panra la'o zoi.
+-- @pledge(k, null)@ .zoi. pe la'oi .C.  .i ku'i drata ki'u zo'e joi
+-- tu'a le se ctaipe be lo me'oi .'Promise'. pe la'oi .@plegg@.
+--
+-- .i lo me'oi .'Promise'. poi ke'a selru'e la'oi .@plegg@. cu binxo
+-- pe'a lo se tcidu poi ke'a selru'e la'o gy. @pledge(2)@ .gy.
+--
+-- = English
+--
+-- @plegg k@ is roughly equivalent to C's "@pledge(k, null)@".
+-- However, unlike the standard @pledge(2)@, @plegg@'s 'Promise's are
+-- typed.
+--
+-- 'Promise's which are passed to @plegg@ are converted into text
+-- which is passed to @pledge(2)@.
+plegg :: [Promise]
+      -- ^ = la .lojban.
+      --
+      -- zo'e poi cadga fa lo nu me'oi .enforce. tu'a ke'a
+      --
+      -- = English
+      --
+      -- The pledges which should be used
+      -> IO ();
 
-  -- | = la .lojban.
-  --
-  -- ni'o la'o zoi. @plegg k@ .zoi. na ru'e dunli la'o zoi.
-  -- @pledge(k, null)@ pe la'oi .C.  .i ku'i drata ki'u le nu le me'oi
-  -- .'Promise'. pe la'oi .@plegg@. cu se me'oi .type.
-  --
-  -- .i lo me'oi .'Promise'. poi selru'e la'oi .@plegg@. cu binxo lo
-  -- selci'a poi selru'e la'o gy. @pledge(2)@ .gy.
-  --
-  -- = English
-  --
-  -- @plegg k@ is roughly equivalent to C's "@pledge(k, nulll)@".
-  -- However, unlike the standard @pledge(2)@, @plegg@'s 'Promise's are
-  -- typed.
-  --
-  -- 'Promise's which are passed to @plegg@ are converted into text
-  -- which is passed to @pledge(2)@.
-  plegg :: [Promise]
-        -- ^ = la .lojban.
-        --
-        -- zo'e poi ke'a goi ko'a zo'u cadga fa lo nu me'oi .enforce.
-        -- tu'a ko'a
-        --
-        -- = English
-        --
-        -- The pledges which should be used
-        -> IO ();
+-- | = la .lojban.
+--
+-- ni'o la'oi .@univac@. korbipe la'oi .Haskell. ce ko'a goi la'o gy.
+-- @unveil(2)@ .gy.
+--
+-- .i ro da poi ke'a .orsi li re je cu selvau pe'a la'oi .@g@. zo'u
+-- la'o zoi. @univac g@ .zoi. jai rinka tu'a lo me ko'a
+-- be lo te .orsi be da be'o bei lo ve .orsi be da
+--
+-- .i la'o zoi. @univac [("", "")]@ .zoi. mapti la'o zoi.
+-- @unveil(NULL, NULL)@ .zoi. pe la'oi .C.
+--
+-- .i la .varik. cu jinvi le du'u le velcki be
+-- la'o zoi. @unveil(2)@ .gy. cu jai filri'a lo nu jimpe
+--
+-- = English
+--
+-- @univac@ is a high-level interface for @unveil(2)@.
+--
+-- For all @(a,b)@ in @g@, @univac g@ runs C's @unveil(a, b)@.
+--
+-- @univac [("", "")]@ is equivalent to C's @unveil(NULL, NULL)@.
+--
+-- @unveil(2)@'s manual page documents the specifics of this thing
+-- pretty well.
+univac :: [(FilePath, String)]
+       -- ^ = la .lojban.
+       --
+       -- [(le me'oi .filepath. poi ke'a goi ko'a zo'u cadga fa lo nu
+       -- me'oi .expose. ko'a, lo torveki be lo jai se curmi... be'o
+       -- noi ke'a mapti lo me'oi .@permissions@. co'e pe la'o gy.
+       -- @unveil(2)@ .gy.)]
+       --
+       -- = English
+       --
+       -- [(PATH WHICH SHOULD BE EXPOSED, PERMISSIONS)]
+       -> IO ();
+
+#ifdef openbsd_HOST_OS
   plegg k = throwErrnoIfMinus1_ "pledge" $
             withCString (promises k) $ \premises ->
             withCString "" $ \execpremises ->
@@ -78,41 +116,6 @@ import Control.Monad;
   promises :: [Promise] -> String;
   promises = map toLower . unwords . map show;
 
-  -- | = la .lojban.
-  --
-  -- ni'o la'oi .@univac@. korbipe la'oi .Haskell. je ko'a goi la'o gy.
-  -- @unveil(2)@ .gy.
-  --
-  -- .i ro da poi .orsi re je poi se vasru la'oi .@g@. zo'u la'o zoi.
-  -- @univac g@ .zoi. pilno lo te .orsi fa'u lo ve .orsi lo pamoi sumti
-  -- be ko'a be'o fa'u lo remoi sumti be ko'a je cu co'e ko'a
-  --
-  -- .i la'o zoi. @univac [("", "")]@ .zoi. dunli la'o zoi.
-  -- @unveil(NULL, NULL)@ .zoi. pe la'oi .C.
-  --
-  -- .i le clinoi be la'o gy. @unveil(2)@ .gy. cu xamgu velski le tcila
-  -- be la'o gy. @unveil(2) .gy.
-  --
-  -- = English
-  --
-  -- @univac@ is a high-level interface for @unveil(2)@.
-  --
-  -- For all @(a,b)@ in @g@, @univac g@ runs C's @unveil(a, b)@.
-  --
-  -- @univac [("", "")]@ is equivalent to C's @unveil(NULL, NULL)@.
-  --
-  -- @unveil(2)@'s manual page documents the specifics of this thing
-  -- pretty well.
-  univac :: [(FilePath, String)]
-         -- ^ = la .lojban.
-         --
-         -- [(le me'oi .filepath. poi ke'a goi ko'a zo'u cadga fa lo nu
-         -- me'oi .expose. ko'a, lo me'oi .permission.)]
-         --
-         -- = English
-         --
-         -- [(PATH WHICH SHOULD BE EXPOSED, PERMISSIONS)]
-         -> IO ();
   univac = mapM_ expose
     where
     expose = teim1_ "unveil" . uncurry unveil <=< toCStrings
@@ -120,81 +123,19 @@ import Control.Monad;
     toCStrings ("","") = pure (nullPtr, nullPtr)
     toCStrings x = (uncurry (liftM2 (,)) . both (`withCString` pure)) x
     both f (a, b) = (f a, f b);
-
 #else
-
-  -- | = la .lojban.
-  --
-  -- ni'o la'o zoi. @plegg k@ .zoi. na ru'e dunli la'o zoi.
-  -- @pledge(k, null)@ pe la'oi .C.  .i ku'i drata ki'u le nu le me'oi
-  -- .'Promise'. pe la'oi .@plegg@. cu se me'oi .type.
-  --
-  -- .i lo me'oi .'Promise'. poi selru'e la'oi .@plegg@. cu binxo lo
-  -- selci'a poi selru'e la'o gy. @pledge(2)@ .gy.
-  --
-  -- = English
-  --
-  -- @plegg k@ is roughly equivalent to C's "@pledge(k, nulll)@".
-  -- However, unlike the standard @pledge(2)@, @plegg@'s 'Promise's are
-  -- typed.
-  --
-  -- 'Promise's which are passed to @plegg@ are converted into text
-  -- which is passed to @pledge(2)@.
-  plegg :: [Promise]
-        -- ^ = la .lojban.
-        --
-        -- zo'e poi ke'a goi ko'a zo'u cadga fa lo nu me'oi .enforce.
-        -- tu'a ko'a
-        --
-        -- = English
-        --
-        -- The pledges which should be used
-        -> IO ();
   plegg _ = return ();
 
-  -- | = la .lojban.
-  --
-  -- ni'o la'oi .@univac@. korbipe la'oi .Haskell. je ko'a goi la'o gy.
-  -- @unveil(2)@ .gy.
-  --
-  -- .i ro da poi .orsi re je poi se vasru la'oi .@g@. zo'u la'o zoi.
-  -- @univac g@ .zoi. pilno lo te .orsi fa'u lo ve .orsi lo pamoi sumti
-  -- be ko'a be'o fa'u lo remoi sumti be ko'a je cu co'e ko'a
-  --
-  -- .i la'o zoi. @univac [("", "")]@ .zoi. dunli la'o zoi.
-  -- @unveil(NULL, NULL)@ .zoi. pe la'oi .C.
-  --
-  -- .i le clinoi be la'o gy. @unveil(2)@ .gy. cu xamgu velski le tcila
-  -- be la'o gy. @unveil(2) .gy.
-  --
-  -- = English
-  --
-  -- @univac@ is a high-level interface for @unveil(2)@.
-  --
-  -- For all @(a,b)@ in @g@, @univac g@ runs C's @unveil(a, b)@.
-  --
-  -- @univac [("", "")]@ is equivalent to C's @unveil(NULL, NULL)@.
-  --
-  -- @unveil(2)@'s manual page documents the specifics of this thing
-  -- pretty well.
-  univac :: [(FilePath, String)]
-         -- ^ = la .lojban.
-         --
-         -- [(le me'oi .filepath. poi ke'a goi ko'a zo'u cadga fa lo nu
-         -- me'oi .expose. ko'a, lo me'oi .permission.)]
-         --
-         -- = English
-         --
-         -- [(PATH WHICH SHOULD BE EXPOSED, PERMISSIONS)]
-         -> IO ();
   univac _ = return ();
 #endif
 
 -- | = la .lojban.
 --
 -- ni'o ro da poi ke'a ctaipe la'oi .'Promise'. zo'u ga je cumki fa lo
--- nu da selru'e la'oi .plegg. gi skicu da fo lo mu'oi
--- gy. man(1) .gy. papri poi ke'a velski la'o gy. pledge(2) .gy.
+-- nu da selru'e la'oi .plegg. gi da mapti lo co'e be lo me'oi .lowercase.
+-- versiio be lo cmene be da be'o pe la'o gy. pledge(2) .gy.  .i la .varik.
+-- cu jinvi le du'u le velcki be tu'a la'o gy. pledge(2) .gy. cu jai filri'a
+-- lo nu jimpe
 --
 -- = English
 --
